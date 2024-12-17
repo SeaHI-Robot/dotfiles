@@ -42,7 +42,6 @@ alias ..2='cd ../..'
 alias ..3='cd ../../..'
 alias refresh_fonts='sudo fc-cache -f -v'
 alias inkscape='/home/syw/.inkscape/Inkscape-091e20e-x86_64.AppImage'
-alias 2204='/media/syw/d2c7c14a-8f0b-45f4-8458-b3100767f4f8/home/syw'
 alias change_default_terminal='sudo update-alternatives --config x-terminal-emulator'
 alias skillsheet='nv /home/syw/toolkits/my_scripts/MySkillSheets.md'
 alias cmake_export_cimpile_commands="cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 "
@@ -205,6 +204,8 @@ alias aud='sudo apt update'
 alias aug='sudo apt upgrade'
 alias alu='apt list --upgradable'
 alias aar="sudo apt autoremove"
+alias ais="sudo apt install"
+alias dpkgi="sudo dpkg -i"
 #################### apt -- END -- ####################
 
 
@@ -285,10 +286,12 @@ export NVM_DIR="$HOME/.nvm"
 
 ####################  docker config --- START ---  ####################
 alias docker_start='sudo systemctl start docker.service'
-alias noetic_start_container='docker container start docker-ros'
-alias noetic_stop_container='docker container stop docker-ros'
-alias noetic="docker exec --user syw -it docker-ros /bin/bash"
-
+alias docker_restart='sudo systemctl restart docker'
+alias noetic_start_container='docker container start docker-noetic'
+alias noetic_stop_container='docker container stop docker-noetic'
+# alias noetic="docker exec --user syw -it docker-noetic /usr/bin/zsh"
+alias noetic="docker exec -it docker-noetic /usr/bin/zsh" # 直接exec指定进入syw用户打不开gazebo，在root用户可以，先进入root然后su syw实测可以正常运行gazebo
+alias noetic_one_start="noetic_start_container; noetic"
 ####################  docker config --- END ---  ####################
 
 
@@ -329,3 +332,10 @@ alias islab-sh='./isaaclab.sh'
 alias islab-sh-python='./isaaclab.sh -p'
 alias isaacgym='cd ~/toolkits/isaac_related/isaacgym'
 ####################  isaac-sim --- END ---  ####################
+
+
+####################  tmuxifier --- START ---  ####################
+export PATH="$HOME/.tmuxifier/bin:$PATH"
+eval "$(tmuxifier init -)"
+alias mxf='tmuxifier'
+####################  tmuxifier --- END ---  ####################

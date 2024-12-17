@@ -117,17 +117,18 @@ plugins=(
 
 # setopt CORRECT_ALL
 
+# 支持通配符, 如*
+setopt nonomatch
 # <Ctrl+/> 接受 auto-suggestion 的补全建议
 bindkey '^_' autosuggest-accept
+bindkey '\' autosuggest-accept
 export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
 source ~/.bash_aliases
-source ~/.zsh_ros2
+# source ~/.zsh_ros2
 source ~/.zsh_aliases
 source $ZSH/oh-my-zsh.sh
 source ~/.llm_api_keys
-eval "$(register-python-argcomplete3 ros2)"
-eval "$(register-python-argcomplete3 colcon)"
 
 source ~/.rvm/scripts/rvm
 
@@ -136,3 +137,7 @@ export PATH=/usr/local/cuda-12.6/bin${PATH:+:${PATH}}
 export LD_LIBRARY_PATH=/usr/local/cuda-12.6/lib64\ ${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 # ===== cuda ===== #
 # ========== My zsh Configuration ========== #
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
