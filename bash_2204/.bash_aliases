@@ -29,6 +29,8 @@ alias ob='/home/syw/Documents/Obsidian/resources/Obsidian-1.5.12.AppImage ; exit
 alias zo='/opt/Zotero_linux-x86_64/zotero'
 alias vv='vi ~/.vim/highvim/local-version/.vimrc'
 alias nv='nvim'
+alias n='nvim'
+alias v='nvim'
 alias neovide='/home/syw/.config/nvim/neovide.AppImage'
 alias vide='/home/syw/.config/nvim/neovide.AppImage'
 alias nvk='nv  ~/.config/nvim/lua/core/keymaps.lua'
@@ -42,15 +44,15 @@ alias ..2='cd ../..'
 alias ..3='cd ../../..'
 alias refresh_fonts='sudo fc-cache -f -v'
 alias inkscape='/home/syw/.inkscape/Inkscape-091e20e-x86_64.AppImage'
-alias 2204='/media/syw/d2c7c14a-8f0b-45f4-8458-b3100767f4f8/home/syw'
 alias change_default_terminal='sudo update-alternatives --config x-terminal-emulator'
 alias skillsheet='nv /home/syw/toolkits/my_scripts/MySkillSheets.md'
 alias cmake_export_cimpile_commands="cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 "
 alias kitty_config='nv ~/.config/kitty/kitty.conf'
 alias kitty_themes='kitty +kitten themes'
 alias gt='gnome-terminal &; exit; exit'
-alias yazi="/home/syw/.config/yazi/yazi-x86_64-unknown-linux-musl/yazi" 
-alias yz="yazi" 
+# alias yazi="/home/syw/.config/yazi/yazi-x86_64-unknown-linux-musl/yazi"
+# alias ya="/home/syw/.config/yazi/yazi-x86_64-unknown-linux-musl/ya"
+# alias yz="yazi"
 export EDITOR=nvim
 alias lg='lazygit'
 alias docker_start='sudo systemctl start docker.service'
@@ -63,6 +65,7 @@ alias highvim='cd ~/.vim/'
 alias highnvim='cd ~/.config/nvim/'
 alias highros-snippets='cd ~/.vscode/High-ROS-Snippets/snippets/'
 alias highros2-snippets='cd ~/.vscode/High-ROS2-Snippets/snippets/'
+alias papers="cd ~/Documents/RL-Papers-2024/"
 alias ta='cd ~/Desktop/TA_career/'
 alias rl='cd ~/toolkits/RL/'
 alias desktops='cd ~/.local/share/applications'
@@ -81,9 +84,30 @@ alias raisim='cd ~/toolkits/raisim_related/raisimLib/'
 ########## Folers ##########
 ########## SSH ##########
 alias Lab433-server='ssh Lab433-server-admin'
-alias Lab433-server-frp='ssh -p 6000 hx@47.236.28.111'
-alias Singapore-server='ssh Singapore-server'
+alias Lab433-server-frp-auth-connect='/home/syw/toolkits/auth-guest_linux_amd64-18854248.auth-guest_linux_amd64-18854248 ; ssh Lab433-server-admin-frp'
 ########## SSH ##########
+source ~/.frpc_aliases
+alias fzfcd='cd_fzf'
+alias fzfbat='bat_fzf'
+alias fzfnvim='nv_fzf'
+cd_fzf() {
+    cd "$(dirname "$(fzf)")"
+}
+bat_fzf() {
+    batcat "$(fzf)"
+}
+nv_fzf() {
+    nv "$(fzf)"
+}
+# yazi: press y to start yazi, and change directory when quit yazi
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
 #################### user alias -- END -- ####################
 
 
@@ -205,6 +229,8 @@ alias aud='sudo apt update'
 alias aug='sudo apt upgrade'
 alias alu='apt list --upgradable'
 alias aar="sudo apt autoremove"
+alias ais="sudo apt install"
+alias dpkgi="sudo dpkg -i"
 #################### apt -- END -- ####################
 
 
@@ -285,10 +311,12 @@ export NVM_DIR="$HOME/.nvm"
 
 ####################  docker config --- START ---  ####################
 alias docker_start='sudo systemctl start docker.service'
-alias noetic_start_container='docker container start docker-ros'
-alias noetic_stop_container='docker container stop docker-ros'
-alias noetic="docker exec --user syw -it docker-ros /bin/bash"
-
+alias docker_restart='sudo systemctl restart docker'
+alias noetic_start_container='docker container start docker-noetic'
+alias noetic_stop_container='docker container stop docker-noetic'
+# alias noetic="docker exec --user syw -it docker-noetic /usr/bin/zsh"
+alias noetic="docker exec -it docker-noetic /usr/bin/zsh" # 直接exec指定进入syw用户打不开gazebo，在root用户可以，先进入root然后su syw实测可以正常运行gazebo
+alias noetic_one_start="noetic_start_container; noetic"
 ####################  docker config --- END ---  ####################
 
 
@@ -329,3 +357,10 @@ alias islab-sh='./isaaclab.sh'
 alias islab-sh-python='./isaaclab.sh -p'
 alias isaacgym='cd ~/toolkits/isaac_related/isaacgym'
 ####################  isaac-sim --- END ---  ####################
+
+
+####################  tmuxifier --- START ---  ####################
+export PATH="$HOME/.tmuxifier/bin:$PATH"
+eval "$(tmuxifier init -)"
+alias mxf='tmuxifier'
+####################  tmuxifier --- END ---  ####################
