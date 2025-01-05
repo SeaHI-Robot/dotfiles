@@ -24,5 +24,3 @@ alias add_compile_commands="add-compile-commands"
 # ===== Migrate compiler from GCC to Clang ===== #
 
 
-export GEM_HOME=$HOME/.gems
-export PATH=$HOME/.gems/bin:$PATH

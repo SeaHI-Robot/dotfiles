@@ -138,6 +138,8 @@ source ~/.rvm/scripts/rvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# export GEM_HOME=$HOME/.gems
+# export PATH=$HOME/.gems/bin:$PATH
 # ===== misc ===== #
 
 # ===== cuda ===== #
@@ -155,6 +157,9 @@ bindkey '^[i'     redo                 # Alt + i  # Alt + r is taken to resize w
 bindkey '^[u'     undo                 # Alt + u
 bindkey '^[d'     delete-word          # Alt + d
 bindkey '^[x'     delete-char          # Alt + x
+bindkey '^[h'     backward-char        # Alt + h
+bindkey '^[l'     forward-char         # Alt + l
+bindkey '^[k'     kill-line            # Alt + k
 # Ctrl + w    backward-delete-word 
 # Ctrl + k    delete to the end of line
 # ========== My bindkey Configuration ========== #

@@ -9,6 +9,7 @@ local config = {
     },
     -- color_scheme = "Catppuccin Frappe",
     color_scheme = 'Everforest Dark Soft (Gogh)',
+    -- color_scheme = 'nordfox',
 
     enable_scroll_bar = false,
     -- enable_scroll_bar = true,

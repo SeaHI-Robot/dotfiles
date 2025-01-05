@@ -205,6 +205,7 @@ alias kgz='pkill -f gzclient ; pkill -f gzclient'
   alias spark='python3 ~/toolkits/my_scripts/python_scripts/spark_script.py'
   alias kimi='python3 ~/toolkits/my_scripts/python_scripts/kimi_script.py'
   alias grok='python3 ~/toolkits/my_scripts/python_scripts/grok_script.py'
+  alias deepseek='python3 ~/toolkits/my_scripts/python_scripts/deepseek_script.py'
   #################### LLM API -- END -- ####################
 alias mypythonscripts='cd ~/toolkits/my_scripts/python_scripts/'
 alias myscripts='cd ~/toolkits/my_scripts'
@@ -316,6 +317,43 @@ alias latex-vi='vi *.tex'
 alias mdlatex2png="python3 ~/toolkits/my_scripts/python_scripts/mdLatex2png.py" 
 alias md2pdf='python ~/toolkits/my_scripts/python_scripts/md2pdf_via_pandoc.py'
 ####################  Latex alias --- END ---  ####################
+
+
+
+####################  Copying Template Dotfile --- START ---  ####################
+template_file_copy() { # Define a function to copy a file from a specific path
+    # Check if the filename argument is provided
+    if [ -z "$1" ]; then
+        echo "Error: Please provide a filename as the first argument."
+        return 1
+    fi
+
+    # Define the source file path
+    source_path="/home/syw/.dotfiles/template_dotfiles/$1"
+
+    # Check if the source file exists
+    if [ ! -f "$source_path" ]; then
+        echo "Error: File '$source_path' does not exist."
+        return 1
+    fi
+
+    # Copy the file to the current directory
+    cp "$source_path" ./
+
+    # Check if the copy operation was successful
+    if [ $? -eq 0 ]; then
+        echo "File '$1' has been successfully copied to the current directory."
+    else
+        echo "Error: Failed to copy file '$1'."
+        return 1
+    fi
+}
+alias template_flake8='template_file_copy .flake8' 
+alias template_gitignore='template_file_copy .gitignore' 
+alias template_stylua='template_file_copy stylua.toml' 
+alias template_pre-commit-config='template_file_copy .pre-commit-config.yaml' 
+####################  Copying Template Dotfile --- END ---  ####################
+
 
 
 ####################  nvm config --- START ---  ####################
