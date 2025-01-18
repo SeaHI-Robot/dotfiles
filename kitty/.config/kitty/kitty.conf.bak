@@ -1,5 +1,5 @@
 # BEGIN_KITTY_THEME
-# Catppuccin-Frappe
+# Nord
 include current-theme.conf
 # END_KITTY_THEME
 
@@ -21,7 +21,6 @@ map alt+0 resize_window reset
 
 map ctrl+shift+- launch --location=split
 map ctrl+shift+\ launch --location=neighbor
-
 
 # font 
 font_size 14
