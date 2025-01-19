@@ -92,7 +92,7 @@ alias dotf='cd ~/.dotfiles/'
 alias nabopointfoot='cd ~/Desktop/nabo_pointfoot_related/Nabo_Pointfoot_Bipedal_Robot_Github/'
 alias isaac_related='cd ~/toolkits/isaac_related/'
 alias raisim='cd ~/toolkits/raisim_related/raisimLib/'
-alias locoex='cd ~/Desktop/LocoExplorer/'
+alias locoex='cd ~/Desktop/LocoExplorer/ ; nvim'
 ########## Folers End ##########
 ########## SSH Start ##########
 alias Lab433-server='ssh Lab433-server-admin'
@@ -264,6 +264,7 @@ alias dpkgi="sudo dpkg -i"
 #################### MuJoCo -- START -- ####################
 alias mjc="uc ; conda activate mjc"
 alias mjviewer="~/toolkits/mujoco_related/mujoco-3.1.5/bin/simulate"
+alias mujoco_related="~/toolkits/mujoco_related/"
   #################### MuJoCo210 -- START -- ####################
   # export LD_LIBRARY_PATH=~/.mujoco/mujoco210/bin
   # export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/nvidia
